@@ -5,6 +5,9 @@ function navigate(page) {
 // Sign-In Form Validation
 document.addEventListener("DOMContentLoaded", function () {
     let signinForm = document.getElementById("signin-form");
+    let btn = document.getElementById("signinbtn");
+
+    // btn.addEventListener("click",()=>)
     if (signinForm) {
         signinForm.addEventListener("submit", function (event) {
             let email = document.getElementById("email").value;
@@ -29,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 alert("Please enter valid details!");
                 event.preventDefault();
             }
+            
         });
     }
 });
@@ -112,7 +116,7 @@ chatContainer.scrollTo({top:chatContainer.scrollHeight,behavior:"smooth"})
         let aiChatBox = createChatBox(html, "ai-chat-box")
         chatContainer.appendChild(aiChatBox)
         generateResponse(aiChatBox)
-    }, 100)
+    }, 600)
 
 }
 
@@ -122,4 +126,8 @@ prompt.addEventListener("keydown", (e) => {
         handchatResponse(prompt.value)
     }
 
+});
+let btn = document.getElementById("enter")
+btn.addEventListener("click",(e)=>{
+    handchatResponse(prompt.value)
 })
