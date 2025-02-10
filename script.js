@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
 let prompt = document.querySelector("#prompt")
 let chatContainer = document.querySelector(".hero-container")
 
-const Api_Url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyCR6j9FYlxN5DqA0g8X079mrWKuVee3ZiU"
+const Api_Url = "https://dhibot-ai-backend.onrender.com/api/gemini"
 let user = {
     data: null,
 }
@@ -51,15 +51,8 @@ async function generateResponse(aiChatBox) {
     let RequestOption = {
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            "contents": [
-                { "parts": [{ "text": user.data }
-
-                ] 
-            }]
-
-        })
-    }
+        body: JSON.stringify({ prompt: user.data }) 
+    };
     try{
         let response = await fetch(Api_Url, RequestOption)
         let data=await response.json()
