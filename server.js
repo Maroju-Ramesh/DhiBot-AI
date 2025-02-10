@@ -1,22 +1,20 @@
-// require('dotenv').config();
-const express = require('express');
-const axios = require('axios');
-const cors = require('cors');
+const express = require("express");
+const axios = require("axios");
+const cors = require("cors");
 
 const app = express();
-app.use(cors({ origin: "https://your-github-Maroju-Ramesh.github.io" })); // Restrict API access to your GitHub Pages
+app.use(cors());
 app.use(express.json());
 
-const API_KEY = process.env.GEMINI_API_KEY; // Secure API Key
+const API_KEY = process.env.GEMINI_API_KEY;
 
-// API Route for Chatbot
-app.post('/api/gemini', async (req, res) => {
+app.post("/api/gemini", async (req, res) => {
     try {
         const userInput = req.body.prompt;
 
         const response = await axios.post(
             `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`,
-            { prompt: userInput }
+            { contents: [{ parts: [{ text: userInput }] }] } // Ensure correct request body
         );
 
         res.json(response.data);
