@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
 let prompt = document.querySelector("#prompt")
 let chatContainer = document.querySelector(".hero-container")
 
-const Api_Url = "https://dhibot-ai-backend.onrender.com/api/gemini"
+const Api_Url = "https://dhibot-ai.onrender.com/api/gemini"
 let user = {
     data: null,
 }
