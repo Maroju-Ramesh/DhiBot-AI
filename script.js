@@ -1,11 +1,69 @@
-function navigate(page) {
-    window.location.href = page;
+
+//intro animation
+document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(() => {
+        document.getElementById("splash").style.display = "none";
+        let main=document.getElementById("main-content")
+        main.style.opacity = "1"; 
+        main.style.display = "block";
+        main.style.display="flex";
+        main.style.justifyContent="center";
+        main.style.alignItems="center";
+        
+        
+    }, 2000); 
+});
+
+//Dark Mode Switch
+let promptbtn = document.getElementsByClassName("promptbtn")
+var icon = document.getElementById("moon");
+icon.onclick=function(){
+    document.body.classList.toggle("light-theme");
+    if(document.body.classList.contains("light-theme")){
+        icon.src="./assets/moon.svg";
+        for (let i = 0; i < promptbtn.length; i++) {
+            promptbtn[i].style.filter = "none";
+        }
+        
+    }
+    else{
+        icon.src = "./assets/sun.svg";
+        for (let i = 0; i < promptbtn.length; i++) {
+            promptbtn[i].style.filter = "invert(1)";
+        }
+    }
+}
+
+
+
+//signin signup navigation
+let signinbtn = document.getElementById("signinbtn")
+let signupbtn = document.getElementById("signupbtn")
+let hero=document.getElementById("hero-nav")
+let signinform =document.getElementById("signinform")
+let signupform = document.getElementById("signupform")
+
+
+function navigatetosignup(){
+    signinform.style.display="none";
+    hero.style.display="none";
+    signupform.style.display="block";
+}
+
+function navigatetosignin(){
+    hero.style.display="none";
+    signupform.style.display="none";
+    signinform.style.display="block";
+}
+
+function guestmode(page){
+window.location.href=page;
 }
 
 // Sign-In Form Validation
 document.addEventListener("DOMContentLoaded", function () {
     let signinForm = document.getElementById("signin-form");
-    let btn = document.getElementById("signinbtn");
+    
 
     // btn.addEventListener("click",()=>)
     if (signinForm) {
@@ -93,7 +151,7 @@ function createChatBox(html, classes) {
 
 function handchatResponse(message) {
     user.data=message
-    let html = ` <img id="user-image" src="./assets/sample.jpg" alt="" width="50"/>
+    let html = ` <img id="user-image" src="./assets/userpic.png" alt="" />
         <div class="user-chat-area">
          ${user.data}
         </div>`
@@ -105,7 +163,7 @@ chatContainer.scrollTo({top:chatContainer.scrollHeight,behavior:"smooth"})
 
 
     setTimeout(() => {
-        let html = `<img id="ai-image"  src="./assets/Ai.webp" width="50" alt="" />
+        let html = `<img id="ai-image"  src="./assets/Ai-img.jpg" alt="" />
         <div class="ai-chat-area">
           <div class="typing-indicator">
   <span></span>
