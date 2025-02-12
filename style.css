@@ -55,7 +55,7 @@ header {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
-
+height: 70px;
   display: flex;
   justify-content: space-between;
   width: 100%;
