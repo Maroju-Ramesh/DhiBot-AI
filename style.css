@@ -55,7 +55,7 @@ header {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
-height: 70px;
+  height: 70px;
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -132,7 +132,7 @@ header img {
 #watermark {
   position: absolute;
 
-  height: 90%;
+  height: 80%;
   left: 35%;
   top: 15%;
   opacity: 0.2;
@@ -146,7 +146,8 @@ main {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   position: relative;
 }
 ::-webkit-scrollbar {
@@ -241,7 +242,6 @@ input:focus {
 }
 .prompt-area button img {
   filter: invert(100%);
-
 }
 
 @media screen and (max-width: 1105px) {
@@ -255,6 +255,9 @@ input:focus {
 @media screen and (max-width: 720px) {
   main {
     padding: 20px 60px;
+  }
+  #watermark {
+    left: 30%;
   }
 }
 @media screen and (max-width: 630px) {
@@ -287,43 +290,43 @@ input:focus {
   main {
     padding: 20px 45px;
   }
-  .user-chat-area{
-    border-radius: 0px 20px 20px 20px;
-    
-  }
-  .ai-chat-area{
+  .user-chat-area {
     border-radius: 0px 20px 20px 20px;
   }
-  .prompt-area button{
+  .ai-chat-area {
+    border-radius: 0px 20px 20px 20px;
+  }
+  .prompt-area button {
     width: 40px;
     height: 40px;
   }
-  .prompt-area button img{
-width: 17px;
+  .prompt-area button img {
+    width: 17px;
   }
-  .prompt-area input{
+  .prompt-area input {
     width: 60%;
-font-size: 1em;
-transform: scaley(0.9);
-padding: 0px 20px;
+    font-size: 1em;
+    transform: scaley(0.9);
+    padding: 0px 20px;
   }
-  
-  
+  #watermark {
+    left: 20%;
+  }
 }
 @media screen and (max-width: 420px) {
-  header{
+  header {
     padding-right: 1.2em;
   }
-  header h1{
+  header h1 {
     font-size: 1.8em;
   }
-    #user-image {
+  #user-image {
     right: -10%;
   }
   #ai-image {
     left: -10%;
   }
-  main{
+  main {
     height: calc(100vh - 70px - 80px);
   }
   .user-chat-box {
@@ -337,9 +340,11 @@ padding: 0px 20px;
   .menu #moon {
     margin-left: 2px;
     padding: 4px;
-    
   }
-  .menu :first-child{
+  .menu :first-child {
     width: 30px;
+  }
+  #watermark {
+    left: 15%;
   }
 }

@@ -3,30 +3,30 @@
 document.addEventListener("DOMContentLoaded", function () {
     setTimeout(() => {
         document.getElementById("splash").style.display = "none";
-        let main=document.getElementById("main-content")
-        main.style.opacity = "1"; 
+        let main = document.getElementById("main-content")
+        main.style.opacity = "1";
         main.style.display = "block";
-        main.style.display="flex";
-        main.style.justifyContent="center";
-        main.style.alignItems="center";
-        
-        
-    }, 2000); 
+        main.style.display = "flex";
+        main.style.justifyContent = "center";
+        main.style.alignItems = "center";
+
+
+    }, 2000);
 });
 
 //Dark Mode Switch
 let promptbtn = document.getElementsByClassName("promptbtn")
 var icon = document.getElementById("moon");
-icon.onclick=function(){
+icon.onclick = function () {
     document.body.classList.toggle("light-theme");
-    if(document.body.classList.contains("light-theme")){
-        icon.src="./assets/moon.svg";
+    if (document.body.classList.contains("light-theme")) {
+        icon.src = "./assets/moon.svg";
         for (let i = 0; i < promptbtn.length; i++) {
             promptbtn[i].style.filter = "none";
         }
-        
+
     }
-    else{
+    else {
         icon.src = "./assets/sun.svg";
         for (let i = 0; i < promptbtn.length; i++) {
             promptbtn[i].style.filter = "invert(1)";
@@ -39,31 +39,31 @@ icon.onclick=function(){
 //signin signup navigation
 let signinbtn = document.getElementById("signinbtn")
 let signupbtn = document.getElementById("signupbtn")
-let hero=document.getElementById("hero-nav")
-let signinform =document.getElementById("signinform")
+let hero = document.getElementById("hero-nav")
+let signinform = document.getElementById("signinform")
 let signupform = document.getElementById("signupform")
 
 
-function navigatetosignup(){
-    signinform.style.display="none";
-    hero.style.display="none";
-    signupform.style.display="block";
+function navigatetosignup() {
+    signinform.style.display = "none";
+    hero.style.display = "none";
+    signupform.style.display = "block";
 }
 
-function navigatetosignin(){
-    hero.style.display="none";
-    signupform.style.display="none";
-    signinform.style.display="block";
+function navigatetosignin() {
+    hero.style.display = "none";
+    signupform.style.display = "none";
+    signinform.style.display = "block";
 }
 
-function guestmode(page){
-window.location.href=page;
+function guestmode(page) {
+    window.location.href = page;
 }
 
 // Sign-In Form Validation
 document.addEventListener("DOMContentLoaded", function () {
     let signinForm = document.getElementById("signin-form");
-    
+
 
     // btn.addEventListener("click",()=>)
     if (signinForm) {
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 alert("Please enter valid details!");
                 event.preventDefault();
             }
-            
+
         });
     }
 });
@@ -109,37 +109,36 @@ let user = {
 
 async function generateResponse(aiChatBox) {
 
-    let text=aiChatBox.querySelector(".ai-chat-area")
+    let text = aiChatBox.querySelector(".ai-chat-area")
     let RequestOption = {
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt: user.data }) 
+        body: JSON.stringify({ prompt: user.data })
     };
-    try{
+    try {
         let response = await fetch(Api_Url, RequestOption)
-        let data=await response.json()
+        let data = await response.json()
 
         // console.log("API Response:", data);
 
 
-        let apiResponse=data.candidates[0].content.parts[0].text.replace(/\*\*(.*?)\*\*/g,"$1").trim()
-       if(apiResponse.includes("large language model"))
-        {
+        let apiResponse = data.candidates[0].content.parts[0].text.replace(/\*\*(.*?)\*\*/g, "$1").trim()
+        if (apiResponse.includes("large language model")) {
             apiResponse = apiResponse.replace(/large language model/gi, "DhiBot AI");
-       } 
-    //    if(apiResponse.includes("trained by google")){
-    //     apiResponse = apiResponse.replace(/trained by google/gi, "M.Ramesh");
-    //    }
-       text.innerHTML=apiResponse;
+        }
+        //    if(apiResponse.includes("trained by google")){
+        //     apiResponse = apiResponse.replace(/trained by google/gi, "M.Ramesh");
+        //    }
+        text.innerHTML = apiResponse;
     }
-   catch(error){
-    console.log(error);
-    text.innerHTML = "Sorry, I encountered an issue. Please try again later.";
-   }
+    catch (error) {
+        console.log(error);
+        text.innerHTML = "Sorry, I encountered an issue. Please try again later.";
+    }
 
-   finally{
-    chatContainer.scrollTo({top:chatContainer.scrollHeight,behavior:"smooth"})
-   }
+    finally {
+        chatContainer.scrollTo({ top: chatContainer.scrollHeight, behavior: "smooth" })
+    }
 }
 
 function createChatBox(html, classes) {
@@ -150,7 +149,7 @@ function createChatBox(html, classes) {
 }
 
 function handchatResponse(message) {
-    user.data=message
+    user.data = message
     let html = ` <img id="user-image" src="./assets/userpic.png" alt="" />
         <div class="user-chat-area">
          ${user.data}
@@ -159,7 +158,7 @@ function handchatResponse(message) {
     let userChatBox = createChatBox(html, "user-chat-box")
     chatContainer.appendChild(userChatBox)
 
-chatContainer.scrollTo({top:chatContainer.scrollHeight,behavior:"smooth"})
+    chatContainer.scrollTo({ top: chatContainer.scrollHeight, behavior: "smooth" })
 
 
     setTimeout(() => {
@@ -186,6 +185,6 @@ prompt.addEventListener("keydown", (e) => {
 
 });
 let btn = document.getElementById("enter")
-btn.addEventListener("click",(e)=>{
+btn.addEventListener("click", (e) => {
     handchatResponse(prompt.value)
 })
