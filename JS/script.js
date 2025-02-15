@@ -1,6 +1,6 @@
 //changing the username on navbar
     let navbarUsername = document.getElementById("nav-username");
-
+    let navbarUsernameItem = document.getElementById("nav-username-item");
     // Retrieve username from localStorage
     let username = localStorage.getItem("username");
 
@@ -8,6 +8,7 @@
         navbarUsername.innerText = "Guest";
     } else {
         navbarUsername.innerText = username;
+        navbarUsernameItem.innerText = username;
     }
 
 //logout from home
@@ -94,9 +95,11 @@ async function generateResponse(aiChatBox, personality) {
         if (apiResponse.includes("large language model")) {
             apiResponse = apiResponse.replace(/large language model/gi, "DhiBot AI");
         }
-
         text.innerHTML = apiResponse;
-    } catch (error) {
+
+    } 
+    
+    catch (error) {
         console.log(error);
         text.innerHTML = "Sorry, I encountered an issue. Please try again later.";
     } finally {
