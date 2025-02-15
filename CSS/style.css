@@ -51,7 +51,7 @@ body {
 }
 
 header {
-  background: url("./assets/bg1.png");
+  background: url("../assets/bg1.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
@@ -66,23 +66,55 @@ header img {
   border-radius: 30px;
   width: 35px;
 }
-.menu {
+.menu2 {
   display: flex;
   align-items: center;
   gap: 10%;
   padding: 0 10px;
 }
+.menu2 #logout {
+  width: 25px;
+  transition: ease-in-out 0.2s;
+}
+.menu2 #moon {
+  transition: ease-in-out 0.2s;
+}
+.menu2 #logout:hover {
+  transform: scale(1.2);
+}
+.menu2 #moon:hover {
+  transform: scale(1.2);
+}
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 10%;
+  padding: 0 10px;
+  display: none;
+}
 .menu p {
   font-size: 1.2em;
 }
-.menu #moon {
+.menu .moon {
   margin-left: 10px;
   padding: 4px;
   transition: transform ease-in-out 0.3s;
 }
-.menu #moon:hover {
-  transform: scale(1.2);
+.menu #user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.menu #logout {
+  width: 26px;
+  opacity: 0.8;
+}
+.menu2 #moon:hover {
+  transform: scale(1);
   cursor: pointer;
+}
+.menu2 #moon:active{
+  transform: scale(1.2);
 }
 /* loading */
 
@@ -237,8 +269,11 @@ input:focus {
   transition: transform 0.3s ease-in-out;
 }
 .prompt-area button:hover {
-  background-image: var(--Primary-Accent);
+  
   transform: scale(1.07);
+}
+.prompt-area button:active{
+  background-image: var(--Primary-Accent);
 }
 .prompt-area button img {
   filter: invert(100%);
@@ -269,6 +304,7 @@ input:focus {
   }
   header {
     padding: 1em 2em;
+    padding-right: 3em;
   }
   .user-chat-box {
     width: 70%;
@@ -312,6 +348,50 @@ input:focus {
   #watermark {
     left: 20%;
   }
+  #moon .moon {
+    margin-left: 0;
+    padding: 0;
+    width: 30px;
+  }
+  #nav-menu.show {
+    display: none;
+    justify-content: center;
+    align-items: start;
+  }
+  #nav-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    position: absolute;
+    z-index: 100;
+    margin-top: 30px;
+    background-color: var(--Secondary-Accent);
+    color: var(--White);
+    border-radius: 10px;
+    right: 15px;
+    width: 150px;
+    padding: 20px;
+    gap: 10px;
+  }
+
+  .float-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #user {
+    transition: ease-in-out 0.2s;
+  }
+  #user:hover {
+    transform: scale(1.1);
+  }
+  .menu {
+    display: block;
+  }
+  .menu2 {
+    display: none;
+  }
 }
 @media screen and (max-width: 420px) {
   header {
@@ -335,16 +415,5 @@ input:focus {
   }
   .ai-chat-box {
     width: 80%;
-  }
-
-  .menu #moon {
-    margin-left: 2px;
-    padding: 4px;
-  }
-  .menu :first-child {
-    width: 30px;
-  }
-  #watermark {
-    left: 15%;
   }
 }

@@ -3,290 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>DhiBot AI</title>
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
-        background: url("./assets/bg2.jpg");
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-      }
-
-      #splash {
-        width: 100%;
-        height: 100vh;
-        background: radial-gradient(
-          circle,
-          #88aabe 30%,
-          #508ea7 20%,
-          rgba(54, 87, 105, 0.1) 100%
-        );
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: rgb(210, 223, 230);
-        font-size: 2rem;
-        font-family: Arial, sans-serif;
-        z-index: 100;
-        animation: fadeOut 2s ease-in-out 2s forwards;
-      }
-
-      .fade-in {
-        opacity: 0;
-        text-shadow: 5px 5px 7px rgb(28, 49, 58);
-        animation: fadeIn 2s ease-in-out forwards;
-        position: relative;
-        overflow: hidden;
-      }
-      .fade-in::after {
-        content: "";
-        background-color: rgb(59, 56, 56, 0.8);
-
-        width: 0%;
-        height: 8%;
-        left: 0;
-        bottom: 0;
-        position: absolute;
-        z-index: 1000;
-        animation: flow forwards 1.6s ease-in-out;
-      }
-      @keyframes flow {
-        0% {
-          width: 0%;
-        }
-        100% {
-          width: 100%;
-        }
-      }
-      .fade-in::before {
-        content: "";
-        position: absolute;
-
-        background: #88aabe;
-        width: 100%;
-        height: 100%;
-        animation: sliding ease-in-out forwards 1.5s;
-      }
-
-      @keyframes sliding {
-        0% {
-          left: 0%;
-        }
-        100% {
-          left: 100%;
-        }
-      }
-
-      @keyframes fadeOut {
-        from {
-          opacity: 1;
-        }
-        to {
-          opacity: 0;
-        }
-      }
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-
-      #main-content {
-        display: none;
-        opacity: 0;
-        animation: fadeIn 1.5s ease-in-out forwards;
-        width: 100%;
-        height: 100vh;
-      }
-      .hero-navigate {
-        background: rgba(255, 255, 255, 0.2);
-        width: 350px;
-
-        border: 1px solid rgb(129, 129, 129);
-        border-radius: 30px;
-
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 40px;
-        gap: 10px;
-      }
-
-      button {
-        width: 100%;
-        height: 40px;
-        border-radius: 10px;
-        border: none;
-        font-size: 15px;
-        color: rgb(43, 43, 43);
-        background-color: rgba(153, 219, 228, 0.3);
-        background-position: left;
-        transition: transform 0.2s ease-in;
-        box-shadow: 0px 2px 4px black;
-        position: relative;
-      }
-
-      #guest {
-        background: url("./assets/Ai.webp");
-      }
-      button:hover {
-        background-color: #cf5b5b;
-        transform: scale(1.03);
-      }
-
-      /* sigin---section */
-
-      .card {
-        display: none;
-        width: 350px;
-        padding: 20px;
-        background: #fff;
-        border-radius: 8px;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-        text-align: center;
-      }
-
-      h3 {
-        margin-bottom: 15px;
-        color: #333;
-      }
-
-      .input-group {
-        text-align: left;
-        margin-bottom: 15px;
-      }
-
-      label {
-        display: block;
-        font-size: 14px;
-        margin-bottom: 5px;
-        color: #555;
-      }
-
-      input {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 14px;
-      }
-
-      /* Button */
-      .btn {
-        width: 100%;
-        background: #007bff;
-        color: white;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-      }
-
-      .btn:hover {
-        background: #0056b3;
-      }
-
-      /* Links */
-      .text-center {
-        margin-top: 10px;
-        font-size: 14px;
-      }
-
-      a {
-        text-decoration: none;
-        color: #007bff;
-      }
-
-      a:hover {
-        text-decoration: underline;
-      }
-      /* signupform----- */
-
-      .card2 {
-        width: 350px;
-        padding: 20px;
-        background: #fff;
-        border-radius: 8px;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        display: none;
-      }
-
-      h3 {
-        margin-bottom: 15px;
-        color: #333;
-      }
-
-      /* Input Fields */
-      .input-group {
-        text-align: left;
-        margin-bottom: 15px;
-      }
-
-      label {
-        display: block;
-        font-size: 14px;
-        margin-bottom: 5px;
-        color: #555;
-      }
-
-      input {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 14px;
-      }
-
-      /* Button */
-      .btn {
-        width: 100%;
-        background: #28a745;
-        color: white;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-      }
-
-      .btn:hover {
-        background: #218838;
-      }
-
-      /* Links */
-      .text-center {
-        margin-top: 10px;
-        font-size: 14px;
-      }
-
-      a {
-        text-decoration: none;
-        color: #007bff;
-      }
-
-      a:hover {
-        text-decoration: underline;
-      }
-    </style>
+    <link rel="stylesheet" href="./CSS/index.css" />
   </head>
 
   <body>
@@ -301,16 +26,15 @@
         <p>– Your smart assistant for seamless interactions!</p>
         <button
           id="signinbtn"
-          onclick="navigatetosignin()"
+          
           style="font-weight: bold"
         >
           Sign In
         </button>
         <button
           id="signupbtn"
-          onclick="navigatetosignup()"
+          
           style="font-weight: bold"
-          onclick="navigate('signup.html')"
         >
           Sign Up
         </button>
@@ -318,7 +42,7 @@
         <button
           style="color: silver"
           id="guest"
-          onclick="guestmode('home.html')"
+          
         >
           Guest Mode
         </button>
@@ -328,25 +52,21 @@
         <h3>Sign In</h3>
         <form id="signin-form">
           <div class="input-group">
-            <label>Email</label>
-            <input id="email" type="email" placeholder="Enter your email" />
+            <input id="email" type="email" placeholder="" required/>
+            <label for="email">Email</label>
           </div>
           <div class="input-group">
-            <label>Password</label>
-            <input
-              id="password"
-              type="password"
-              placeholder="Enter your password"
-            />
+            <input id="password" type="password" placeholder="" required />
+            <label for="password">Password</label>
           </div>
           <button id="signinbtn" type="submit" class="btn">Sign In</button>
         </form>
         <div class="text-center">
-          <a href="#">Forgot Password?</a>
+          <a  id="backtohome">Back to Home</a>
         </div>
         <div class="text-center">
           <p>
-            Don't have an account? <a onclick="navigatetosignup()">Sign Up</a>
+            Don't have an account? <a id="dontHaveAcc">Sign Up</a>
           </p>
         </div>
       </div>
@@ -357,36 +77,36 @@
         <h3>Sign Up</h3>
         <form id="signup-form">
           <div class="input-group">
-            <label>Full Name</label>
-            <input id="name" type="text" placeholder="Enter your full name" />
+            <input id="name" type="text" placeholder="" required />
+         <label for="name" >Full Name</label>
           </div>
           <div class="input-group">
-            <label>Email</label>
             <input
               id="signup-email"
-              type="email"
-              placeholder="Enter your email"
+              type="email" placeholder=""
+              required
             />
+            <label for="email" >Email</label>
           </div>
           <div class="input-group">
-            <label>Password</label>
             <input
               id="signup-password"
-              type="password"
-              placeholder="Create a password"
+              type="password" placeholder=""
+              required
             />
+            <label for="password" >Create Password</label>
           </div>
 
           <button id="signupbtn" type="submit" class="btn">Sign Up</button>
         </form>
         <div class="text-center">
           <p>
-            Already have an account? <a onclick="navigatetosignin()">Sign In</a>
+            Already have an account? <a id="alreadyAcc">Sign In</a>
           </p>
         </div>
       </div>
     </div>
 
-    <script src="./script.js"></script>
+    <script src="./JS/index.js" type="module"></script>
   </body>
 </html>
